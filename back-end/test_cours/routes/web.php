@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,9 @@ Route::get("/test",function(){
 });
 
 Route::get("/book", [Controller::class,'myBooking']);
+
+
+Route::get('/',function(){
+    Mail::to('ouadrhirimaroua@gmail.com')
+    ->send(new App\Mail\PharmeEasy());
+});

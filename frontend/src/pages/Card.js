@@ -7,7 +7,11 @@ const Card = () => {
     const [usersList, setUsersList] = useState([]);
     const [medicamentsList, setMedicamentsList] = useState([]);
     const [pharmacieList, setPharmacieList] = useState([]);
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 534cffb1b643e31ae94a9616c876c1f90e36e3b4
     useEffect(() => {
         const fetchUsersData = async () => {
             try {
@@ -36,13 +40,21 @@ const Card = () => {
         fetchMedicamentsData();
     }, []);
     useEffect(() => {
+<<<<<<< HEAD
             const fetchpharmacieListsData = async () => {
+=======
+            const fetchPharmaciesData = async () => {
+>>>>>>> 534cffb1b643e31ae94a9616c876c1f90e36e3b4
                 const response = await fetch('http://127.0.0.1:8000/api/pharmacie');
                 const data = await response.json();
                 setPharmacieList(data.pharmacie);
             };
 
+<<<<<<< HEAD
             fetchpharmacieListsData();
+=======
+            fetchPharmaciesData();
+>>>>>>> 534cffb1b643e31ae94a9616c876c1f90e36e3b4
         }, []);
 
     return (

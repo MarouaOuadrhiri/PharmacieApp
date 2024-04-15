@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ConversationController;
@@ -34,7 +35,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+//delete users
+Route::delete('delete/{userId}',[UtilisateurController::class,'delete']);
 
 
 Route::post('/createUser',[UserController::class,'create']);
@@ -97,3 +99,8 @@ Route::get('getmedicaments', [MedicamentController::class, 'getAllMedicaments'])
 Route::get('/medicaments/{category}', [MedicamentController::class, 'index']);
 Route::post('/getusirinfo/{id}',[UtilisateurController::class,'obtenirInformationsUtilisateur']);
 
+//sendEmail
+Route::get('/sendEMail/{emailUsers}',function($emailUsers){
+    Mail::to($emailUsers)
+    ->send(new App\Mail\PharmeEasy());
+});
