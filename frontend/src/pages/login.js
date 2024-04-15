@@ -33,7 +33,7 @@ export default function Login(){
       .then(data => {
         // Log the data received from thez server
         console.log(data);
-        //localStorage.setItem('userData', JSON.stringify(data));
+        localStorage.setItem('userData', JSON.stringify(data));
 
         // Redirect to another page after successful login
         window.location.href = "/dash"; // Change "/another-page" to the URL of the page you want to redirect to
@@ -60,7 +60,7 @@ export default function Login(){
     })
     .catch(error => {
       console.error('AxiosError:', error);
-    }); */
+    }); */
   
 
     return(
