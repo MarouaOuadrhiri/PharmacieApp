@@ -6,6 +6,7 @@ import { faUserDoctor, faAngleRight, faUsers, faCapsules } from '@fortawesome/fr
 const Card = () => {
     const [usersList, setUsersList] = useState([]);
     const [medicamentsList, setMedicamentsList] = useState([]);
+    const [pharmacieList, setPharmacieList] = useState([]);
   
     useEffect(() => {
         const fetchUsersData = async () => {
@@ -34,15 +35,15 @@ const Card = () => {
 
         fetchMedicamentsData();
     }, []);
-    /*useEffect(() => {
-            const fetchMedicamentsData = async () => {
-                const response = await fetch('http://127.0.0.1:8000/api/AllPharmacie');
+    useEffect(() => {
+            const fetchpharmacieListsData = async () => {
+                const response = await fetch('http://127.0.0.1:8000/api/pharmacie');
                 const data = await response.json();
-                setMedicamentsList(data);
+                setPharmacieList(data.pharmacie);
             };
 
-            fetchMedicamentsData();
-        }, []);*/
+            fetchpharmacieListsData();
+        }, []);
 
     return (
         <>
@@ -64,7 +65,7 @@ const Card = () => {
                     <div className="card mb-4 border-2 border-slate-300 hover:shadow-2xl">
                         <Link className="text-decoration-none card-link text-slate-950 hover:text-blue-700 focus:outline-none focus:text-blue-700" to="/dash/pharmacie">
                             <div className="card-body my-3 mx-4">
-                                <span><FontAwesomeIcon icon={faUserDoctor} className="ml-3 mr-4" /> Pharmacie {/*pharmacieList.length*/}</span>
+                                <span><FontAwesomeIcon icon={faUserDoctor} className="ml-3 mr-4" /> Pharmacie {pharmacieList.length}</span>
                             </div>
                             <div className="card-footer d-flex align-items-center justify-content-between">
                                 <div className="small mx-2 my-2"><FontAwesomeIcon icon={faAngleRight} className="mx-3" /> View Details</div>
