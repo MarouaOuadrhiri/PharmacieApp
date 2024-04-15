@@ -156,6 +156,20 @@ public function fetchId(Request $request)
         return response()->json(['error' => 'Pharmacist not found'], 404);
     }
 }
+
+    public function delete($id){
+        $utilisateur = Utilisateur::find($id);
+        if (!$utilisateur) {
+            return response()->json(['message' => 'Utilisateur non trouvé.'], 404);
+        }
+    
+        // Supprimer l'utilisateur
+        $utilisateur->delete();
+    
+        // Retourner une réponse JSON pour indiquer que la suppression a été effectuée avec succès
+        return response()->json(['message' => 'Utilisateur supprimé avec succès.'], 200);
+    
+    }
 }
 
 
