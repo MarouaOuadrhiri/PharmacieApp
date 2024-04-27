@@ -29,6 +29,7 @@ class UtilisateurFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'ville' => $this->faker->city(),
             'numtel' => (string) $this->faker->unique()->numerify('0##########'),
+            'confirmer'=>$this->faker->boolean(),
             'password' => Hash::make('password'),
         ];
     }

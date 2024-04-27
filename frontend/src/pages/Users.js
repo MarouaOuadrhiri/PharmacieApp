@@ -20,6 +20,7 @@ function App() {
       } catch (error) {
         console.error('FetchError:', error);
       }
+      
     };
 
   useEffect(() => {

@@ -37,6 +37,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //delete users
 Route::delete('delete/{userId}',[UtilisateurController::class,'delete']);
+//delete Pharmacie
+Route::delete('deletePharmacie/{userId}',[PharmacieController::class,'delete']);
+Route::put('validerPharmacies', [PharmacieController::class, 'valider']);
+Route::delete('deleteAllPharmacies', [PharmacieController::class, 'deleteAll']);
+
 
 
 Route::post('/createUser',[UserController::class,'create']);
@@ -103,4 +108,7 @@ Route::post('/getusirinfo/{id}',[UtilisateurController::class,'obtenirInformatio
 Route::get('/sendEMail/{emailUsers}',function($emailUsers){
     Mail::to($emailUsers)
     ->send(new App\Mail\PharmeEasy());
+    app(\App\Http\Controllers\ValidationController::class)->valider($emailUsers);
 });
+
+Route::post('/AjouterMedicament',[MedicamentController::class,'AjouterMedicament']);

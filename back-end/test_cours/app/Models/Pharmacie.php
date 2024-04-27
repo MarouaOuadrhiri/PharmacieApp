@@ -20,7 +20,8 @@ class Pharmacie extends Authenticatable
         'email',
         'NumTele',
         'NumFx',
-        "password"
+        "password",
+        "confirmer"
     ];
 
 }

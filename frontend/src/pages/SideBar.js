@@ -28,15 +28,7 @@ const SideBar = () => {
                         Medicaments
                     </Link>
                     
-                    <div className="sb-sidenav-menu-heading">Addons</div>
-                    <Link className="nav-link focus:bg-slate-300 hover:bg-slate-300 hover:border-slate-300 rounded" to="#">
-                        <div className="sb-nav-link-icon"><i className="fas fa-chart-area"></i></div>
-                        Charts
-                    </Link>
-                    <Link className="nav-link focus:bg-slate-300 hover:bg-slate-300 hover:border-slate-300 rounded" to="#">
-                        <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
-                        Tables
-                    </Link>
+                    
                 </div>
             </div>
             <div className="sb-sidenav-footer">

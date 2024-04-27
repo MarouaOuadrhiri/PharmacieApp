@@ -23,6 +23,7 @@ class PharmacieFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'VillePh' => $this->faker->city(),
             'Adresse' => $this->faker->streetAddress(),
+            'confirmer'=>$this->faker->boolean(),
             'NumTele' => (string) $this->faker->unique()->numerify('0##########'),
             'NumFx' => (string) $this->faker->unique()->numerify('0##########'),
             'password' => Hash::make('password'),

@@ -7,6 +7,7 @@ import './css/styles.css';
 import Users from './pages/Users';
 import Footer from './pages/Footer';
 import Medicaments from './pages/Medicaments';
+import AddMedicament from './pages/AddMedicament';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -55,6 +56,10 @@ function App() {
           {
             path: "/dash",
             element: <Dash />
+          },
+          {
+            path: "/dash/ajouterMedicament",
+            element: <AddMedicament />
           },
         ]
       },

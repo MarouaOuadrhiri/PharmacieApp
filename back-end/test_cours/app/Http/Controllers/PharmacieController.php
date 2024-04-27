@@ -180,4 +180,62 @@ public function ajouterNotification(Request $request, $inbe)
 
         return response()->json(['pharmacie' => $pharmacie], 200);
     }
+
+    public function delete($id){
+        $utilisateur = Pharmacie::find($id);
+        if (!$utilisateur) {
+            return response()->json(['message' => 'Utilisateur non trouvé.'], 404);
+        }
+    
+        // Supprimer l'utilisateur
+        $utilisateur->delete();
+    
+        // Retourner une réponse JSON pour indiquer que la suppression a été effectuée avec succès
+        return response()->json(['message' => 'Utilisateur supprimé avec succès.'], 200);
+    
+    }
+    // public function valider(Request $request)
+    // {
+    //     $pharmacyIds = $request->input('pharmaciesSelectionnees');
+        
+    //     // Perform the validation logic for all pharmacy IDs in the array
+    //     Pharmacie::whereIn('id', $pharmacyIds)->update(['confirmer' => true]);
+        
+    //     // Return a response, such as a success message
+    //     return response()->json(['message' => 'Pharmacies validated successfully'], 200);
+    // }
+    public function valider(Request $request)
+{
+    $pharmacyIds = $request->input('pharmaciesSelectionnees');
+    $action = $request->input('action'); // This should be a string indicating the action to perform (e.g., 'confirm' or 'unconfirm')
+    
+    if ($action === 'unconfirm') {
+        Pharmacie::whereIn('id', $pharmacyIds)->update(['confirmer' => false]);
+        $message = 'Pharmacies unconfirmed successfully';
+    } else {
+        Pharmacie::whereIn('id', $pharmacyIds)->update(['confirmer' => true]);
+        $message = 'Pharmacies confirmed successfully';
+    }
+    
+    // Return a response, such as a success message
+    return response()->json(['message' => $message], 200);
+}
+
+public function deleteAll(Request $request)
+{
+    try {
+        $pharmacyIds = $request->input('pharmaciesSelectionnees');
+
+        // Validate the input if necessary
+
+        // Delete pharmacies based on the array of IDs
+        Pharmacie::whereIn('id', $pharmacyIds)->delete();
+
+        return response()->json(['message' => 'Pharmacies deleted successfully'], 200);
+    } catch (\Exception $e) {
+        return response()->json(['message' => 'Error deleting pharmacies', 'error' => $e->getMessage()], 500);
+    }
+}
+
+    
 }

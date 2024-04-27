@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string("numtel",13);
             $table->string("ville");
-            $table->boolean('confirmer')->default(false);
+            $table->boolean('confirmer')->default(true);
             $table->timestamps();
         });
     }

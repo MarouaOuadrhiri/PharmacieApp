@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string("NumTele",13)->unique();
             $table->string("NumFx",13)->unique();
+            $table->boolean('confirmer')->default(false);
             $table->string('password');
             $table->timestamps();
         });
